@@ -81,7 +81,7 @@ angular.module('autofields.core', [])
 		};
 		// Standard Label for field
 		var getLabel = function(directive, field, attrs){
-			var label = angular.element('<label/>');
+			var label = angular.element('<label translate/>');
 			attrs = angular.extend({}, autofields.settings.attributes.label, directive.options.attributes.label, attrs);
 			setAttributes(directive, field, label, attrs);
 			label.addClass((directive.options||autofields.settings).classes.label.join(' '));
