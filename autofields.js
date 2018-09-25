@@ -274,8 +274,7 @@ angular.module('autofields.standard',['autofields.core'])
 	.config(['$autofieldsProvider', function($autofieldsProvider){
 		// Text Field Handler
 
-		var noSpace = /^\S*$/;
-		var dot = /\.+[a-zA-Z_]+$/;
+		var regex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9_]+)*$/;
 
 		$autofieldsProvider.settings.fixUrl = true;
 		$autofieldsProvider.registerHandler(['text','email','url','date','number','password'], function(directive, field, index){
@@ -283,7 +282,7 @@ angular.module('autofields.standard',['autofields.core'])
 			var fieldElements = $autofieldsProvider.field(directive, field, htmlTemplate);
 			var t = fieldElements.input[0].placeholder;
 
-			if(noSpace.test(t) && dot.test(t))
+			if(regex.test(t))
 				fieldElements.input[0].placeholder = "{{'" + t + "' | translate}}";
 
 			var fixUrl = (field.fixUrl ? field.fixUrl : directive.options.fixUrl);
@@ -314,7 +313,7 @@ angular.module('autofields.standard',['autofields.core'])
 			var fieldElements = $autofieldsProvider.field(directive, field, '<textarea />', {rows: rows});
 			var t = fieldElements.input[0].placeholder;
 
-			if(noSpace.test(t) && dot.test(t))
+			if(regex.test(t))
 				fieldElements.input[0].placeholder = "{{'" + t + "' | translate}}";
 
 			return fieldElements.fieldContainer;
