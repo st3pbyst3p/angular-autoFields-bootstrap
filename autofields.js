@@ -273,14 +273,18 @@ angular.module('autofields.core', [])
 angular.module('autofields.standard',['autofields.core'])
 	.config(['$autofieldsProvider', function($autofieldsProvider){
 		// Text Field Handler
+
+		var noSpace = /^\S*$/;
+		var dot = /\.+[a-zA-Z_]+$/;
+
 		$autofieldsProvider.settings.fixUrl = true;
 		$autofieldsProvider.registerHandler(['text','email','url','date','number','password'], function(directive, field, index){
 			var htmlTemplate = '<input/>';
-			if(field.type === "text" || !field.type){ 
-				htmlTemplate = '<input translate/>';
-				directive.options.attributes.input.translateAttrPlaceholder = '$placeholder';
-			}
 			var fieldElements = $autofieldsProvider.field(directive, field, htmlTemplate);
+			var t = fieldElements.input[0].placeholder;
+
+			if(noSpace.test(t) && dot.test(t))
+				fieldElements.input[0].placeholder = "{{'" + t + "' | translate}}";
 
 			var fixUrl = (field.fixUrl ? field.fixUrl : directive.options.fixUrl);
 			if(field.type == 'url' && fixUrl) fieldElements.input.attr('fix-url','');
@@ -307,7 +311,11 @@ angular.module('autofields.standard',['autofields.core'])
 		$autofieldsProvider.settings.textareaRows = 3;
 		$autofieldsProvider.registerHandler('textarea', function(directive, field, index){
 			var rows = field.rows ? field.rows : directive.options.textareaRows;
-			var fieldElements = $autofieldsProvider.field(directive, field, '<textarea translate/>', {rows: rows});
+			var fieldElements = $autofieldsProvider.field(directive, field, '<textarea />', {rows: rows});
+			var t = fieldElements.input[0].placeholder;
+
+			if(noSpace.test(t) && dot.test(t))
+				fieldElements.input[0].placeholder = "{{'" + t + "' | translate}}";
 
 			return fieldElements.fieldContainer;
 		});
