@@ -274,7 +274,7 @@ angular.module('autofields.standard',['autofields.core'])
 	.config(['$autofieldsProvider', function($autofieldsProvider){
 		// Text Field Handler
 
-		var regex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9_]+)*$/;
+		var regex = /^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*$/;
 
 		$autofieldsProvider.settings.fixUrl = true;
 		$autofieldsProvider.registerHandler(['text','email','url','date','number','password'], function(directive, field, index){
