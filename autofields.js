@@ -220,7 +220,7 @@ angular.module('autofields.core', [])
 
 					// Build fields from schema using handlers
 					var build = function(schema){
-						schema = schema || $scope[directive.schemaStr];
+						schema = schema || $scope[directive.schemaStr] || $scope.$eval(directive.schemaStr);
 
 						// Create HTML
 						directive.container.html('');
