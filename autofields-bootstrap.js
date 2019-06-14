@@ -232,7 +232,7 @@ angular.module('autofields.bootstrap.validation',['autofields.validation'])
 	.config(['$autofieldsProvider', function($autofieldsProvider){
 		// Add Validation Attributes
 		$autofieldsProvider.settings.attributes.container.ngClass = "{'has-error':"+$autofieldsProvider.settings.validation.invalid+", 'has-success':"+$autofieldsProvider.settings.validation.valid+"}";
-		$autofieldsProvider.settings.attributes.input.uibPopover = "{{("+$autofieldsProvider.settings.validation.valid+") ? '$validMsg' : ($errorMsgs)}}";
+		$autofieldsProvider.settings.attributes.input.uibPopover = "{{("+$autofieldsProvider.settings.validation.valid+") ? '$validMsg' : ($errorMsgs | translate)}}";
 
 		// Dont show popovers on these types
 		// this is to avoid multiple scope errors with UI Bootstrap
