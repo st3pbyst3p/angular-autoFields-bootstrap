@@ -412,7 +412,8 @@ angular.module('autofields.validation', ['autofields.core'])
 				email: 'This is not a valid email address',
 				valid: ''
 			},
-			invalid: '$form.$property_clean.$invalid && $form.$property_clean.$dirty',
+			// invalid: '$form.$property_clean.$invalid && $form.$property_clean.$dirty',
+			invalid: '$form.$property_clean.$invalid',
 			valid: '$form.$property_clean.$valid'
 		};
 
