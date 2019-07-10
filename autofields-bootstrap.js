@@ -254,7 +254,8 @@ angular.module('autofields.bootstrap.validation',['autofields.validation'])
 									.replace(/\$errorMsgs/gi, fieldElements.msgs.join('+'));
 				fieldElements.input.attr({
 					'uib-popover-trigger':'keyup focus',
-					'uib-popover':popoverAttr
+					'uib-popover':popoverAttr,
+					'popover-is-open': 'this.docForm.isPopoverOpen || this.pageForm.isPopoverOpen' // setting to show popover based on a var in form
 				});
 			}else{
 				fieldElements.input.removeAttr('uib-popover');
