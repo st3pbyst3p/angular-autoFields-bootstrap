@@ -51,7 +51,7 @@ angular.module('autofields.core', [])
 			},
 			container: '<div class="autofields" ng-form name="$form"></div>',
 			scope: {},
-			handlers: {} // value of all registred handlers
+			handlers: [] // value of all registred handlers
 		};
 
 		// Field Building Helpers
@@ -142,8 +142,8 @@ angular.module('autofields.core', [])
 			types = Array.isArray(types) ? types : [types];
 			angular.forEach(types, function(type){
 				handlers[type] = fn;
+				autofields.settings.handlers.push(type);
 			});
-			autofields.settings.handlers = Object.assign({}, handlers); // copying all registred handlers
 		}
 
 		// Mutator Container
