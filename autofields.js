@@ -247,8 +247,9 @@ angular.module('autofields.core', [])
 						helper.extendDeep(directive.options, newOptions);
 						if(newOptions !== oldOptions) build();
 					}, true);
-					$scope.$watch(directive.schemaStr, function (schema) {
-						build(schema);
+					$scope.$watch(directive.schemaStr, function (schema, oldSchema) {
+						if(JSON.stringify(schema) === JSON.stringify(oldSchema)) build(schema);
+						// build(schema);
 					}, true);
 					$scope.$watch(directive.formStr, function (form) {
 						directive.container.attr('name',directive.formStr);
