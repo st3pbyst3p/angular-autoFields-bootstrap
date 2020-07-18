@@ -248,7 +248,7 @@ angular.module('autofields.core', [])
 						if(newOptions !== oldOptions) build();
 					}, true);
 					$scope.$watch(directive.schemaStr, function (schema, oldSchema) {
-						if(JSON.stringify(schema) === JSON.stringify(oldSchema)) build(schema);
+						if(!oldSchema || (JSON.stringify(schema) === JSON.stringify(oldSchema))) build(schema);
 						// build(schema);
 					}, true);
 					$scope.$watch(directive.formStr, function (form) {
