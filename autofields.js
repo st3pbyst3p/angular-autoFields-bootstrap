@@ -298,8 +298,9 @@ angular.module('autofields.standard',['autofields.core'])
 		$autofieldsProvider.settings.defaultOption = 'Select One';
 		$autofieldsProvider.registerHandler('select', function(directive, field, index){
 			var defaultOption = (field.defaultOption ? field.defaultOption : directive.options.defaultOption);
+			if(field.attr && field.attr.defaultOption) defaultOption = field.attr.defaultOption;
 
-			var inputHtml = '<select><option value="">'+defaultOption+'</option></select>';
+			var inputHtml = '<select><option value="" translate>'+defaultOption+'</option></select>';
 			var inputAttrs = {
 				ngOptions: field.list
 			};
