@@ -281,7 +281,8 @@ angular.module('autofields.standard',['autofields.core'])
 
 		$autofieldsProvider.settings.fixUrl = true;
 		$autofieldsProvider.registerHandler(['text','email','url','date','number','password'], function(directive, field, index){
-			var htmlTemplate = '<input/>';
+			// var htmlTemplate = '<input/>';
+			var htmlTemplate = '<input alt-clear-ngmodel />';
 			var fieldElements = $autofieldsProvider.field(directive, field, htmlTemplate);
 			var t = fieldElements.input[0].placeholder;
 
