@@ -283,7 +283,7 @@ angular.module('autofields.standard',['autofields.core'])
 		$autofieldsProvider.registerHandler(['text','email','url','date','number','password'], function(directive, field, index){
 			var htmlTemplate = '<input/>';
 			// only one directive per element
-			if(!field.attr || (!field.attr.hasOwnProperty('alt-eval-value') && !field.attr.hasOwnProperty('alt-input-autofocus-scan'))) htmlTemplate = '<input alt-clear-ngmodel />';
+			if(!field.attr || (!field.attr.hasOwnProperty('alt-eval-value') && !field.attr.hasOwnProperty('alt-input-autofocus-scan') && !field.attr.hasOwnProperty('alt-filter'))) htmlTemplate = '<input alt-clear-ngmodel />';
 			
 			var fieldElements = $autofieldsProvider.field(directive, field, htmlTemplate);
 			var t = fieldElements.input[0].placeholder;
