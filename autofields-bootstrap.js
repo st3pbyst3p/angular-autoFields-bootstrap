@@ -180,6 +180,22 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			//Add class to container
 			directive.container.addClass('form-horizontal');
 
+			// custom sizes for each directive
+			if(field.attr && field.attr.labelSize) {
+				var newLabelSize = parseInt(field.attr.labelSize);
+				if(!isNaN(newLabelSize) && 12>newLabelSize) {
+					labelSize = newLabelSize;
+					if(!field.attr.inputSize) inputSize = 12 - newLabelSize;
+				}
+			}
+			if(field.attr && field.attr.inputSize) {
+				var newInputSize = parseInt(field.attr.inputSize);
+				if(!isNaN(newInputSize) && 12>newInputSize) {
+					inputSize = newInputSize;
+					if(!field.attr.labelSize) labelSize = 12 - newInputSize;
+				}
+			}
+
 			// Add input container & sizing class
 			var inputContainer = angular.element('<div/>');
 			inputContainer.addClass(col.replace(/\$size/gi, inputSize));
