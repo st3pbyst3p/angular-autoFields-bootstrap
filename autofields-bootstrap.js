@@ -196,6 +196,20 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 				}
 			}
 
+			// custom link and styles for label
+			if(field.attr && field.attr.hasOwnProperty('alt-label-link')) {
+				var href = field.attr['alt-label-link'];
+				var target = field.attr['alt-label-target'] || '_blank';
+				var style = field.attr['alt-label-style'] || '';
+
+				fieldElements.label[0].innerHTML = "<a href='" + href + "' target='" + target + "' style='" + style + "' translate>{{'" + field.label + "'}}</a>";
+			}
+			else if(field.attr && field.attr.hasOwnProperty('alt-label-style')) {
+				var style = field.attr['alt-label-style'] || '';
+
+				fieldElements.label[0].innerHTML = "<span style='" + style + "' translate>{{'" + field.label + "'}}</span>";
+			}
+
 			// Add input container & sizing class
 			var inputContainer = angular.element('<div/>');
 			inputContainer.addClass(col.replace(/\$size/gi, inputSize));
