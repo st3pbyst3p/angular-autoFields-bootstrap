@@ -202,7 +202,7 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 				var target = field.attr['alt-label-target'] || '_self';
 				// var style = field.attr['alt-label-style'] || '';
 
-				fieldElements.label[0].innerHTML = "<span translate>{{'" + field.label + "'}}</span> <a title='{{\"doctype.gotolist\" | translate}}' href='" + href + "' target='" + target + "'><i class='glyphicon glyphicon-link' style='font-size: 12px; margin-left: 2px;' aria-hidden='true'></i></a>";
+				fieldElements.label[0].innerHTML = "<span translate>{{'" + field.label + "'}}</span> <a title='{{\"usr.goto\" | translate}}' href='" + href + "' target='" + target + "'><i class='glyphicon glyphicon-link' style='font-size: 12px; margin-left: 2px;' aria-hidden='true'></i></a>";
 				// fieldElements.label[0].innerHTML = "<a href='" + href + "' target='" + target + "' style='" + style + "' translate>{{'" + field.label + "'}}</a>";
 			}
 			// else if(field.attr && field.attr.hasOwnProperty('alt-label-style')) {
