@@ -199,16 +199,17 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			// custom link and styles for label
 			if(field.attr && field.attr.hasOwnProperty('alt-label-link')) {
 				var href = field.attr['alt-label-link'];
-				var target = field.attr['alt-label-target'] || '_blank';
-				var style = field.attr['alt-label-style'] || '';
+				var target = field.attr['alt-label-target'] || '_self';
+				// var style = field.attr['alt-label-style'] || '';
 
-				fieldElements.label[0].innerHTML = "<a href='" + href + "' target='" + target + "' style='" + style + "' translate>{{'" + field.label + "'}}</a>";
+				fieldElements.label[0].innerHTML = "<span translate>{{'" + field.label + "'}}</span> <a title='{{\"doctype.gotolist\" | translate}}' href='" + href + "' target='" + target + "'><i class='glyphicon glyphicon-link' style='font-size: 12px; margin-left: 2px;' aria-hidden='true'></i></a>";
+				// fieldElements.label[0].innerHTML = "<a href='" + href + "' target='" + target + "' style='" + style + "' translate>{{'" + field.label + "'}}</a>";
 			}
-			else if(field.attr && field.attr.hasOwnProperty('alt-label-style')) {
-				var style = field.attr['alt-label-style'] || '';
+			// else if(field.attr && field.attr.hasOwnProperty('alt-label-style')) {
+			// 	var style = field.attr['alt-label-style'] || '';
 
-				fieldElements.label[0].innerHTML = "<span style='" + style + "' translate>{{'" + field.label + "'}}</span>";
-			}
+			// 	fieldElements.label[0].innerHTML = "<span style='" + style + "' translate>{{'" + field.label + "'}}</span>";
+			// }
 
 			// Add input container & sizing class
 			var inputContainer = angular.element('<div/>');

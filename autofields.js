@@ -86,6 +86,7 @@ angular.module('autofields.core', [])
 			attrs = angular.extend({}, autofields.settings.attributes.label, directive.options.attributes.label, attrs);
 			setAttributes(directive, field, label, attrs);
 			label.addClass((directive.options||autofields.settings).classes.label.join(' '));
+			if(field && field.property) label.attr('for', field.property);
 			var g = "<span translate>" + helper.LabelText(field) + "</span>";
 			label.html(g);
 
