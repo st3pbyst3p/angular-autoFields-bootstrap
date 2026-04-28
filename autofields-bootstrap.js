@@ -58,6 +58,8 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 				}];
 			}
 
+			console.log(field);
+
 			var fieldElements = $autofieldsProvider.field(directive, field, '<input/>', inputAttrs);
 
 			return fieldElements.fieldContainer;
@@ -211,6 +213,11 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			// 	fieldElements.label[0].innerHTML = "<span style='" + style + "' translate>{{'" + field.label + "'}}</span>";
 			// }
 
+			// removing label
+			if(field.attr && field.attr.hasOwnProperty('alt-remove-label') && field.attr['alt-remove-label'] && !field.attr.inputSize) {
+				inputSize = 12;
+			}
+
 			// Add input container & sizing class
 			var inputContainer = angular.element('<div/>');
 			inputContainer.addClass(col.replace(/\$size/gi, inputSize));
@@ -240,6 +247,11 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			// Move Help Block
 			if(field.help){
 				inputContainer.append(fieldElements.helpBlock);
+			}
+
+			// removing label
+			if(field.attr && field.attr.hasOwnProperty('alt-remove-label') && field.attr['alt-remove-label']) {
+				fieldElements.label.remove();
 			}
 
 			return fieldElements;
