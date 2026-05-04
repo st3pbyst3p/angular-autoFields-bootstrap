@@ -213,6 +213,13 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			// 	fieldElements.label[0].innerHTML = "<span style='" + style + "' translate>{{'" + field.label + "'}}</span>";
 			// }
 
+			// vertical full-width input and label
+			if(field.attr && field.attr.hasOwnProperty('alt-label-vertical') && field.attr['alt-label-vertical']) {
+				labelSize = 12;
+				inputSize = 12;
+				fieldElements.label.attr('style', "text-align: left; margin-bottom: 5px;");
+			}
+
 			// removing label
 			if(field.attr && field.attr.hasOwnProperty('alt-remove-label') && field.attr['alt-remove-label'] && !field.attr.inputSize) {
 				inputSize = 12;
@@ -252,6 +259,7 @@ angular.module('autofields.bootstrap', ['autofields.standard','ui.bootstrap'])
 			// removing label
 			if(field.attr && field.attr.hasOwnProperty('alt-remove-label') && field.attr['alt-remove-label']) {
 				fieldElements.label.remove();
+				inputContainer.addClass('pull-right');
 			}
 
 			return fieldElements;
