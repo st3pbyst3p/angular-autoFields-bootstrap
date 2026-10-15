@@ -66,7 +66,8 @@ angular.module('autofields.core', [])
 						.replace(/\$property_clean/g, field.property.replace(/\[|\]|\./g, ''))
 						.replace(/\$property/g, field.property)
 						.replace(/\$data/g, directive.dataStr)
-						.replace(/\$placeholder/g, field.placeholder != null ? field.placeholder : helper.LabelText(field));
+						.replace(/\$placeholder/g, field.placeholder ? field.placeholder : '');
+						// .replace(/\$placeholder/g, field.placeholder != null ? field.placeholder : helper.LabelText(field));
 				}
 				el.attr(helper.CamelToDash(attr), value);
 			});
